@@ -4,20 +4,38 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ignore="http://www.galasoft.ch/ignore"
+        xmlns:backgroundImage ="C:\Users\Drew\source\repos\FunFeud\FunFeud\Images\FunFeudBackground.jpg"
+        xmlns:local="clr-namespace:FunFeud.Converters"
         mc:Ignorable="d ignore"
         Title="MVVM Light Application"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
-    
+
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Skins/MainSkin.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <local:ShowAnswerConverter x:Key="ShowAnswerConverter" />
+            
+            <!--A Style that affects all TextBlocks-->
+            <Style TargetType="StackPanel">
+                <Setter Property="Orientation" Value="Horizontal" />
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Height" Value="60"/>
+                <Setter Property="Width" Value="280"/>
+                <Setter Property="Margin" Value="10"/>
+
+            </Style>
         </ResourceDictionary>
     </Window.Resources>
 
-    <Grid x:Name="LayoutRoot" Background="Black">
-        <Grid Width="300" Height="150">
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\Drew\source\repos\FunFeud\FunFeud\Images\FunFeudBackground.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid ShowGridLines="True" Margin="86,148,88,53" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -28,6 +46,42 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
+
+            <!--Left Column-->
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Background="Blue" Visibility="{Binding SelectedTopic.Answer1.Revealed, Converter={StaticResource ShowAnswerConverter}}">
+                <TextBlock Width="110" VerticalAlignment="Center" Text="{Binding SelectedTopic.Answer1.Description}"></TextBlock>
+                <TextBlock Width="40" VerticalAlignment="Center" Text="{Binding SelectedTopic.Answer1.Points}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1"  Background="Blue" Visibility="{Binding SelectedTopic.Answer2.Revealed, Converter={StaticResource ShowAnswerConverter}}">
+                <TextBlock Width="110" VerticalAlignment="Center" Text="{Binding SelectedTopic.Answer2.Description}"></TextBlock>
+                <TextBlock Width="40" VerticalAlignment="Center" Text="{Binding SelectedTopic.Answer2.Points}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2"  Background="Blue" Visibility="{Binding SelectedTopic.Answer3.Revealed, Converter={StaticResource ShowAnswerConverter}}">
+                <TextBlock Width="110" VerticalAlignment="Center" Text="{Binding SelectedTopic.Answer3.Description}"></TextBlock>
+                <TextBlock Width="40" VerticalAlignment="Center" Text="{Binding SelectedTopic.Answer3.Points}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="3" Background="Blue" Visibility="{Binding SelectedTopic.Answer4.Revealed, Converter={StaticResource ShowAnswerConverter}}">
+                <TextBlock Width="110" VerticalAlignment="Center" Text="{Binding SelectedTopic.Answer4.Description}"></TextBlock>
+                <TextBlock Width="40" VerticalAlignment="Center" Text="{Binding SelectedTopic.Answer4.Points}"></TextBlock>
+            </StackPanel>
+
+            <!--Right Column-->
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0" Background="Blue"  Visibility="{Binding SelectedTopic.Answer5.Revealed, Converter={StaticResource ShowAnswerConverter}}">
+                <TextBlock Width="110" VerticalAlignment="Center" Text="{Binding SelectedTopic.Answer5.Description}"></TextBlock>
+                <TextBlock Width="40" VerticalAlignment="Center" Text="{Binding SelectedTopic.Answer5.Points}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1" Background="Blue" Visibility="{Binding SelectedTopic.Answer6.Revealed, Converter={StaticResource ShowAnswerConverter}}">
+                <TextBlock Width="110" VerticalAlignment="Center" Text="{Binding SelectedTopic.Answer6.Description}"></TextBlock>
+                <TextBlock Width="40" VerticalAlignment="Center" Text="{Binding SelectedTopic.Answer6.Points}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" Background="Blue" Visibility="{Binding SelectedTopic.Answer7.Revealed, Converter={StaticResource ShowAnswerConverter}}">
+                <TextBlock Width="110" VerticalAlignment="Center" Text="{Binding SelectedTopic.Answer7.Description}"></TextBlock>
+                <TextBlock Width="40" VerticalAlignment="Center" Text="{Binding SelectedTopic.Answer7.Points}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3" Background="Blue" Visibility="{Binding SelectedTopic.Answer8.Revealed, Converter={StaticResource ShowAnswerConverter}}">
+                <TextBlock Width="110" VerticalAlignment="Center" Text="{Binding SelectedTopic.Answer8.Description}"></TextBlock>
+                <TextBlock Width="40" VerticalAlignment="Center" Text="{Binding SelectedTopic.Answer8.Points}"></TextBlock>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>

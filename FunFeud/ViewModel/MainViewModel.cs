@@ -19,7 +19,6 @@ namespace FunFeud.ViewModel
         public const string WelcomeTitlePropertyName = "WelcomeTitle";
 
         private string _welcomeTitle = string.Empty;
-
         /// <summary>
         /// Gets the WelcomeTitle property.
         /// Changes to that property's value raise the PropertyChanged event. 
@@ -36,6 +35,23 @@ namespace FunFeud.ViewModel
             }
         }
 
+        private Topic _topic = new Topic();
+        /// <summary>
+        /// Gets the WelcomeTitle property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public Topic SelectedTopic
+        {
+            get
+            {
+                return _topic;
+            }
+            set
+            {
+                Set(ref _topic, value);
+            }
+        }
+        
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
